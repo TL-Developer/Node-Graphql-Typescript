@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/TL-Developer/Node-Graphql/issues"
   },
-  "homepage": "https://github.com/TL-Developer/Node-Graphql#readme"
+  "homepage": "https://github.com/TL-Developer/Node-Graphql#readme",
+  "devDependencies": {
+    "typescript": "2.5.3"
+  }
 }
