@@ -67,12 +67,18 @@ const resolvers = {
   },
   Mutation: {
     createUser: (parent, args, context, info) => {
-      const newUser = Object.assign({id: users.length + 1}, args);
+      const newUser = {
+        id: users.length + 1,
+        ...args,
+      };
       users.push(newUser);
       return newUser;
     },
     createCar: (parent, args, context, info) => {
-      const newCar = Object.assign({id: cars.length + 1}, args);
+      const newCar = {
+        id: cars.length + 1,
+        ...args,
+      };
       cars.push(newCar);
       return newCar;
     }

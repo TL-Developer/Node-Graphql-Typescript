@@ -4,7 +4,7 @@
   "description": "Node GraphQL",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development node_modules/.bin/nodemon --delay 5 dist/index",
+    "dev": "cross-env NODE_ENV=development node_modules/.bin/nodemon --inspect --delay 5 dist/index",
     "gulp": "node_modules/.bin/gulp"
   },
   "repository": {
