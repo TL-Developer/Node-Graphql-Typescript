@@ -43,7 +43,7 @@ const typeDefs = `
     email: String!
   }
 
-  type Cars {
+  type Car {
     id: ID!
     name: String!
     model: String!
@@ -51,7 +51,12 @@ const typeDefs = `
 
   type Query {
     allUsers: [User!]!,
-    allCars: [Cars!]!,
+    allCars: [Car!]!,
+  }
+
+  type Mutation {
+    createUser(name: String!, email: String!): User,
+    createCar(name: String!, model: String!): Car
   }
 `;
 
@@ -59,6 +64,18 @@ const resolvers = {
   Query: {
     allUsers: () => users,
     allCars: () => cars,
+  },
+  Mutation: {
+    createUser: (parent, args, context, info) => {
+      const newUser = Object.assign({id: users.length + 1}, args);
+      users.push(newUser);
+      return newUser;
+    },
+    createCar: (parent, args, context, info) => {
+      const newCar = Object.assign({id: cars.length + 1}, args);
+      cars.push(newCar);
+      return newCar;
+    }
   }
 }
 
