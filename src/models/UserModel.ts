@@ -1,7 +1,7 @@
-import * Sequelize from "sequelize";
-import { BaseModelInterface } from "../interfaces/BaseModelInterface";
-
+import * as Sequelize from "sequelize";
 import { genSaltSync, hashSync, compareSync } from 'bcryptjs';
+
+import { BaseModelInterface } from "../interfaces/BaseModelInterface";
 import { ModelsInterface } from "../interfaces/modelsInterface";
 
 export interface UserAttributes {
@@ -49,6 +49,7 @@ export default (sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes):
         length: 'long',
       }),
       allowNull: false,
+      defaultValue: null,
     },
   }, {
     tableName: 'users',
@@ -62,7 +63,7 @@ export default (sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes):
 
   User.associate = (models: ModelsInterface): void => {};
 
-  User.prototype.isPassword = isPassword(encodedPassword: string, password: string): boolean => {
+  User.prototype.isPassword = (encodedPassword: string, password: string): boolean => {
     return compareSync(password, encodedPassword);
   };
 

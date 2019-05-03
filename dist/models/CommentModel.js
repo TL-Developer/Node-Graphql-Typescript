@@ -15,9 +15,7 @@ exports.default = (sequelize, DataTypes) => {
     }, {
         tableName: 'comments',
     });
-    Comment.associate(models, ModelsInterface);
-    void ;
-    {
+    Comment.associate = (models) => {
         Comment.belongsTo(models.Post, {
             foreignKey: {
                 allowNull: false,
@@ -32,7 +30,6 @@ exports.default = (sequelize, DataTypes) => {
                 name: 'user',
             }
         });
-    }
-    ;
+    };
     return Comment;
 };

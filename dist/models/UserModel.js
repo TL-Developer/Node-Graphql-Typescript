@@ -30,6 +30,7 @@ exports.default = (sequelize, DataTypes) => {
                 length: 'long',
             }),
             allowNull: false,
+            defaultValue: null,
         },
     }, {
         tableName: 'users',
@@ -41,8 +42,7 @@ exports.default = (sequelize, DataTypes) => {
         },
     });
     User.associate = (models) => { };
-    User.prototype.isPassword = isPassword(encodedPassword, string, password, string);
-        boolean => {
+    User.prototype.isPassword = (encodedPassword, password) => {
         return bcryptjs_1.compareSync(password, encodedPassword);
     };
     return User;
